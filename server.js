@@ -1,15 +1,21 @@
+//node_modules
 var express = require('express');
 var path = require('path');
 var fs = require('fs');
 
 var app = express();
 
+var kicks = require('./api/handlers/kicks');
+
+
+//env setup
 var isProduction = process.env.NODE_ENV === 'production';
 var port = isProduction ? 80 : 3000;
 
 // var settings = require('./api/config/settings');
 // app.use(settings.forceHttps);
 
+//cors setup
 var cors = require('cors');
 
 var whitelist = [
@@ -27,6 +33,7 @@ var corsOptions = {
 };
 app.use(cors(corsOptions));
 
+//Socket.io setup
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
@@ -35,23 +42,25 @@ io.on('connection', function(data) {
     console.log('brack bracka');
 });
 
-// GraphiQL Docs
-// var graphqlHTTP = require('express-graphql');
-// var apiSchema = require('./api/schema');
+//GraphiQL  setup
+var graphqlHTTP = require('express-graphql');
+var apiSchema = require('./api/schema');
 
-// app.use('/api/v/:vid/graph', graphqlHTTP(function(req, res) {
-//     return {
-//         schema: apiSchema,
-//         rootValue: {
-//             req: req,
-//             res: res
-//         },
-//         pretty: true,
-//         graphiql: true
-//     };
-// }));
+app.use('/api/v/:vid/graph', graphqlHTTP(function(req, res) {
+    return {
+        schema: apiSchema,
+        rootValue: {
+            req: req,
+            res: res,
+            io: io,
+        },
+        pretty: true,
+        graphiql: true
+    };
+}));
 
 
 server.listen(port, function() {
     console.log('SetLife-ApiOnly: Server running on port ' + port);
+    kicks.startFeed(io);
 });
