@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/brgarciarivas/Kicks-pi/issues"
   },
-  "homepage": "https://github.com/brgarciarivas/Kicks-pi#readme"
+  "homepage": "https://github.com/brgarciarivas/Kicks-pi#readme",
+  "dependencies": {
+    "socket.io-client": "^2.0.3"
+  }
 }
