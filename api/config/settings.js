@@ -56,8 +56,8 @@ module.exports = {
             on: 29955,
             off: 29964,
         },
-    ];
-    
+    ],
+
     forceHttps: function(req, res, next) {
         var isProduction = process.env.NODE_ENV != null;
 
