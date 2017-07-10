@@ -5,12 +5,12 @@ var fs = require('fs');
 
 var app = express();
 
-var kicks = require('./api/handlers/kicks');
+var kicks = require('./api/handlers/kick');
 
 
 //env setup
 var isProduction = process.env.NODE_ENV === 'production';
-var port = isProduction ? 80 : 3000;
+var port = isProduction ? process.env.PORT: 3000;
 
 // var settings = require('./api/config/settings');
 // app.use(settings.forceHttps);
@@ -20,7 +20,9 @@ var cors = require('cors');
 
 var whitelist = [
     'http://localhost:8080',
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'https://kicks-pi.herokuapp.com/',
+    'http://kicks-pi.herokuapp.com/',
 ];
 var corsOptions = {
     origin: function(origin, callback) {
@@ -38,9 +40,15 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
 
-io.on('connection', function(data) {
+io.on('connection', function(socket) {
     console.log('brack bracka');
+
+    socket.on('button', function(data, from) {
+        console.log('data');
+        console.log(data)
+    })
 });
+
 
 //GraphiQL  setup
 var graphqlHTTP = require('express-graphql');
@@ -62,5 +70,5 @@ app.use('/api/v/:vid/graph', graphqlHTTP(function(req, res) {
 
 server.listen(port, function() {
     console.log('SetLife-ApiOnly: Server running on port ' + port);
-    kicks.startFeed(io);
+    //kicks.startFeed(io);
 });
