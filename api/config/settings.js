@@ -33,6 +33,31 @@ module.exports = {
             secretAccessKey: 'Use environment variables'
         }
     },
+    rfCodes: [
+        {
+            on: 21811,
+            off: 21820,
+            
+        },
+        {
+            on: 21955,
+            off: 21964,
+            
+        },
+        {
+            on: 22275,
+            off: 22284,
+        },
+        {
+            on: 23811,
+            off: 23820,
+        },
+        {
+            on: 29955,
+            off: 29964,
+        },
+    ];
+    
     forceHttps: function(req, res, next) {
         var isProduction = process.env.NODE_ENV != null;
 

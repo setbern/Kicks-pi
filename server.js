@@ -2,6 +2,7 @@
 var express = require('express');
 var path = require('path');
 var fs = require('fs');
+var rpi433 = require('rpi-433');
 
 var app = express();
 
@@ -43,7 +44,19 @@ var io = require('socket.io')(server);
 io.on('connection', function(socket) {
     console.log('brack bracka');
 
-    socket.on('button', function(data, from) {
+    socket.on('on', function(data, from) {
+        console.log('data');
+        console.log(data)
+        rfEmitter = rpi433.emitter({
+              pin: 0,                     //Send through GPIO 0 (or Physical PIN 11)
+              pulseLength: 178            //Send the code with a 350 pulse length
+            });
+
+        rfEmitter.sendCode(29955, function(error, stdout) {   //Send 29964
+          if(!error) console.log(stdout); //Should display 1234
+        });
+    })
+    socket.on('off', function(data, from) {
         console.log('data');
         console.log(data)
     })
