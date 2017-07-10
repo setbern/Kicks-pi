@@ -52,15 +52,16 @@ io.on('connection', function(socket) {
               pulseLength: 178            //Send the code with a 178 pulse length
             });
 
+        rfEmitter.sendCode(21955, function(error, stdout) {   
+          if(!error) console.log(stdout); 
+        });
         rfEmitter.sendCode(29955, function(error, stdout) {   
           if(!error) console.log(stdout); 
         });
         rfEmitter.sendCode(21811, function(error, stdout) {   
           if(!error) console.log(stdout); 
         });
-        rfEmitter.sendCode(21955, function(error, stdout) {   
-          if(!error) console.log(stdout); 
-        });
+        
         rfEmitter.sendCode(22275, function(error, stdout) {   
           if(!error) console.log(stdout); 
         });
