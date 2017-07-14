@@ -56,7 +56,11 @@ io.on('connection', function(socket) {
         //   if(!error) console.log(stdout); 
         // });
         rfEmitter.sendCode(29955, function(error, stdout) {   
-          if(!error) console.log(stdout); 
+            if(!error) console.log(stdout);
+
+            rfEmitter.sendCode(23811, function(error, stdout) {   
+                if(!error) console.log(stdout); 
+            }); 
         });
         // rfEmitter.sendCode(21811, function(error, stdout) {   
         //   if(!error) console.log(stdout); 
@@ -65,9 +69,7 @@ io.on('connection', function(socket) {
         // rfEmitter.sendCode(22275, function(error, stdout) {   
         //   if(!error) console.log(stdout); 
         // });
-        rfEmitter.sendCode(23811, function(error, stdout) {   
-          if(!error) console.log(stdout); 
-        });
+        
     })
     socket.on('off', function(data, from) {
         console.log('data');
@@ -76,12 +78,15 @@ io.on('connection', function(socket) {
             pin: 0,                     //Send through GPIO 0 (or Physical PIN 11)
             pulseLength: 178            //Send the code with a 178 pulse length
         });
+
         rfEmitter.sendCode(29964, function(error, stdout) {   
-          if(!error) console.log(stdout); 
+            if(!error) console.log(stdout); 
+            
+            rfEmitter.sendCode(23820, function(error, stdout) {   
+                if(!error) console.log(stdout); 
+            });
         });
-        rfEmitter.sendCode(23820, function(error, stdout) {   
-          if(!error) console.log(stdout); 
-        });
+        
     })
 });
 
