@@ -1,6 +1,6 @@
 var rpi433  = require('rpi-433'),
 rfSniffer = rpi433.sniffer({
-      pin: 2,                     //Snif on GPIO 2 (or Physical PIN 13)
+      pin: 1,                     //Snif on GPIO 2 (or Physical PIN 13)
       debounceDelay: 500          //Wait 500ms before reading another code
     });
     
