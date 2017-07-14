@@ -55,10 +55,10 @@ io.on('connection', function(socket) {
         // rfEmitter.sendCode(21955, function(error, stdout) {   
         //   if(!error) console.log(stdout); 
         // });
-        rfEmitter.sendCode(29955, function(error, stdout) {   
+        rfEmitter.sendCode(23811, function(error, stdout) {   
             if(!error) console.log(stdout);
 
-            rfEmitter.sendCode(23811, function(error, stdout) {   
+            rfEmitter.sendCode(29955, function(error, stdout) {   
                 if(!error) console.log(stdout); 
             }); 
         });
@@ -79,10 +79,10 @@ io.on('connection', function(socket) {
             pulseLength: 178            //Send the code with a 178 pulse length
         });
 
-        rfEmitter.sendCode(29964, function(error, stdout) {   
+        rfEmitter.sendCode(23820, function(error, stdout) {   
             if(!error) console.log(stdout); 
-            
-            rfEmitter.sendCode(23820, function(error, stdout) {   
+
+            rfEmitter.sendCode(29964, function(error, stdout) {   
                 if(!error) console.log(stdout); 
             });
         });
