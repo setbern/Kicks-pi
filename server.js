@@ -51,7 +51,7 @@ io.on('connection', function(socket) {
     console.log('brack bracka');
     socket.on('on', function(data, from) {
         console.log('socket on')
-        rfEmitter.sendCode(29955, function(error, stdout) {  
+        rfEmitter.sendCode(23811, function(error, stdout) {  
             if(!error) 
             console.log(stdout); 
         }).then(function(rfEmitter){
@@ -70,7 +70,7 @@ io.on('connection', function(socket) {
         console.log('data');
         console.log(data)
 
-        rfEmitter.sendCode(29964, function(error, stdout) {   
+        rfEmitter.sendCode(23820, function(error, stdout) {   
             if(!error) console.log(stdout); 
         }).then(function(rfEmitter) {
             rfEmitter.sendCode(23820, function(error, stdout) {   
