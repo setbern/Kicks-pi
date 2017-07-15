@@ -52,26 +52,19 @@ io.on('connection', function(socket) {
               pulseLength: 178            //Send the code with a 178 pulse length
             });
 
-        // rfEmitter.sendCode(21955, function(error, stdout) {   
-        //   if(!error) console.log(stdout); 
-        // });
 
         rfEmitter.sendCode(29955, function(error, stdout) {   
             if(!error) 
             console.log(stdout); 
-        });
+        }).then(function(rfEmitter){
+            rfEmitter.sendCode(23811, function(error, stdout) {   
+                if(!error) 
+                console.log(stdout);
+            });
+        })
 
-        rfEmitter.sendCode(23811, function(error, stdout) {   
-            if(!error) 
-            console.log(stdout);
-        });
-        // rfEmitter.sendCode(21811, function(error, stdout) {   
-        //   if(!error) console.log(stdout); 
-        // });
         
-        // rfEmitter.sendCode(22275, function(error, stdout) {   
-        //   if(!error) console.log(stdout); 
-        // });
+       
         
     })
     socket.on('off', function(data, from) {
@@ -84,13 +77,12 @@ io.on('connection', function(socket) {
 
         rfEmitter.sendCode(29964, function(error, stdout) {   
             if(!error) console.log(stdout); 
-        });
-        // rfEmitter.sendCode(23820, function(error, stdout) {   
-        //     if(!error) console.log(stdout); 
-
-           
-        // });
-        
+        }).then(function(rfEmitter) {
+            rfEmitter.sendCode(23820, function(error, stdout) {   
+                if(!error) console.log(stdout); 
+            });
+        })
+       
     })
 });
 
