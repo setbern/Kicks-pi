@@ -55,14 +55,16 @@ io.on('connection', function(socket) {
         // rfEmitter.sendCode(21955, function(error, stdout) {   
         //   if(!error) console.log(stdout); 
         // });
-        rfEmitter.sendCode(29955, function(error, stdout) {   
-            if(!error) console.log(stdout); 
-        }); 
-        // rfEmitter.sendCode(23811, function(error, stdout) {   
-        //     if(!error) console.log(stdout);
 
-            
-        // });
+        rfEmitter.sendCode(29955, function(error, stdout) {   
+            if(!error) 
+            console.log(stdout); 
+        });
+
+        rfEmitter.sendCode(23811, function(error, stdout) {   
+            if(!error) 
+            console.log(stdout);
+        });
         // rfEmitter.sendCode(21811, function(error, stdout) {   
         //   if(!error) console.log(stdout); 
         // });

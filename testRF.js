@@ -4,7 +4,7 @@ rfSniffer = rpi433.sniffer({
       debounceDelay: 500          //Wait 500ms before reading another code
     });
     
-
+console.log('testing')
 // Receive (data is like {code: xxx, pulseLength: xxx})
 rfSniffer.on('data', function (data) {
     console.log('shit went off');
