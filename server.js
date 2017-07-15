@@ -41,22 +41,21 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
 
+rfEmitter = rpi433.emitter({
+    pin: 0,                     //Send through GPIO 0 (or Physical PIN 11)
+    pulseLength: 178            //Send the code with a 178 pulse length
+});
+
+
 io.on('connection', function(socket) {
     console.log('brack bracka');
-
     socket.on('on', function(data, from) {
-        console.log('data');
-        console.log(data)
-        rfEmitter = rpi433.emitter({
-              pin: 0,                     //Send through GPIO 0 (or Physical PIN 11)
-              pulseLength: 178            //Send the code with a 178 pulse length
-            });
-
-
-        rfEmitter.sendCode(29955, function(error, stdout) {   
+        console.log('socket on')
+        rfEmitter.sendCode(29955, function(error, stdout) {  
             if(!error) 
             console.log(stdout); 
         }).then(function(rfEmitter){
+            console.log('second')
             rfEmitter.sendCode(23811, function(error, stdout) {   
                 if(!error) 
                 console.log(stdout);
@@ -70,10 +69,6 @@ io.on('connection', function(socket) {
     socket.on('off', function(data, from) {
         console.log('data');
         console.log(data)
-        rfEmitter = rpi433.emitter({
-            pin: 0,                     //Send through GPIO 0 (or Physical PIN 11)
-            pulseLength: 178            //Send the code with a 178 pulse length
-        });
 
         rfEmitter.sendCode(29964, function(error, stdout) {   
             if(!error) console.log(stdout); 
