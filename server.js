@@ -51,15 +51,20 @@ io.on('connection', function(socket) {
     console.log('brack bracka');
     socket.on('on', function(data, from) {
         console.log('socket on')
-        rfEmitter.sendCode(23811, function(error, stdout) {  
-            if(!error) 
-            console.log(stdout); 
-        }).then(function(rfEmitter){
-            console.log('second')
-            rfEmitter.sendCode(23811, function(error, stdout) {   
+        return new Promise(function(resolve, reject) {
+            rfEmitter.sendCode(23811, function(error, stdout) {  
                 if(!error) 
-                console.log(stdout);
-            });
+                console.log(stdout); 
+            }).then(function(rfEmitter){
+                console.log('second')
+                rfEmitter.sendCode(23811, function(error, stdout) {   
+                    if(!error) 
+                    console.log(stdout);
+                    resolve()
+                });
+                console.log('testing')
+        });
+        
         })
 
         
