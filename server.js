@@ -57,7 +57,8 @@ io.on('connection', function(socket) {
                 console.log(stdout); 
             }).then(function(rfEmitter){
                 console.log('second')
-                rfEmitter.sendCode(23811, function(error, stdout) {   
+                rfEmitter.sendCode(23811, function(error, stdout) { 
+                    console.log(error)  
                     if(!error) 
                     console.log(stdout);
                     resolve()
