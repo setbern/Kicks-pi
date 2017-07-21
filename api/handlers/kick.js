@@ -4,7 +4,7 @@ var rpi433 = require('rpi-433');
 
 var kick = module.exports = (function() {
 
-    var settings = require('../config/constants');
+    var settings = require('../config/settings');
 
     var json = request.defaults({
         json: true,
