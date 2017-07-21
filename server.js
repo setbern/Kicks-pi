@@ -6,7 +6,7 @@ var rpi433 = require('rpi-433');
 
 var app = express();
 
-var kicks = require('./api/handlers/kick');
+var kick = require('./api/handlers/kick');
 
 
 //env setup
@@ -41,49 +41,20 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
 
-rfEmitter = rpi433.emitter({
-    pin: 0,                     //Send through GPIO 0 (or Physical PIN 11)
-    pulseLength: 178            //Send the code with a 178 pulse length
-});
 
 
 io.on('connection', function(socket) {
     console.log('brack bracka');
     socket.on('on', function(data, from) {
         console.log('socket on')
-        return new Promise(function(resolve, reject) {
-            rfEmitter.sendCode(23811, function(error, stdout) {  
-                if(!error) 
-                console.log(stdout); 
-            }).then(function(rfEmitter){
-                console.log('second')
-                rfEmitter.sendCode(23811, function(error, stdout) { 
-                    console.log(error)  
-                    if(!error) 
-                    console.log(stdout);
-                    resolve()
-                });
-                console.log('testing')
-        });
-        
-        })
-
-        
-       
+        console.log(data)
+        kick(turnLightOn(data))
         
     })
     socket.on('off', function(data, from) {
-        console.log('data');
+        console.log('socket off')
         console.log(data)
-
-        rfEmitter.sendCode(23820, function(error, stdout) {   
-            if(!error) console.log(stdout); 
-        }).then(function(rfEmitter) {
-            rfEmitter.sendCode(23820, function(error, stdout) {   
-                if(!error) console.log(stdout); 
-            });
-        })
-       
+        kick(turnLightOff(data))
     })
 });
 
