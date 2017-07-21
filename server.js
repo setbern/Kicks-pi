@@ -48,13 +48,13 @@ io.on('connection', function(socket) {
     socket.on('on', function(data, from) {
         console.log('socket on')
         console.log(data)
-        kick(turnLightOn(data))
+        kick.turnLightOn(data)
         
     })
     socket.on('off', function(data, from) {
         console.log('socket off')
         console.log(data)
-        kick(turnLightOff(data))
+        kick.turnLightOff(data)
     })
 });
 
