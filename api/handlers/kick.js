@@ -14,8 +14,7 @@ var kick = module.exports = (function() {
         console.log('turnLightOn');
         var codes = settings.rfCodes
         return new Promise(function(resolve, reject) {
-            console.log(codes)
-
+            console.log(codes[socket])
             rfEmitter = rpi433.emitter({
                 pin: 0,                     //Send through GPIO 0 (or Physical PIN 11)
                 pulseLength: 178            //Send the code with a 178 pulse length
@@ -32,7 +31,7 @@ var kick = module.exports = (function() {
         console.log('turnLightOff');
         var codes = settings.rfCodes
         return new Promise(function(resolve, reject) {
-            console.log(codes)
+            console.log(codes[socket])
 
             rfEmitter = rpi433.emitter({
                 pin: 0,                     //Send through GPIO 0 (or Physical PIN 11)
