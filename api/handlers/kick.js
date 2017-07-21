@@ -49,7 +49,6 @@ var kick = module.exports = (function() {
         });        
     };
     return {
-        startFeed: startFeed,
         turnLightOn: turnLightOn,
         turnLightOff: turnLightOff,
     };
