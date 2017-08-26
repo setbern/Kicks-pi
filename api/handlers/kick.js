@@ -33,9 +33,9 @@ var kick = module.exports = (function() {
             var lightLength = lights.length;
             console.log('lights length ' + lightLength)
 
-            var emitter =  {
+            var emitter =  [
 
-            }
+            ]
 
             for(var x = 0; x < lightLength; x++) {
                 console.log(x)
@@ -71,7 +71,7 @@ var kick = module.exports = (function() {
 
                 for(var i = 1; i < lightLength -1; i++) {
                     params = {
-                        emit: emitters[i],
+                        emit: emitter[lights[x]],
                         light: i,
                     }
                     console.log('emit params')
