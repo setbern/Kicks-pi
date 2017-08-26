@@ -56,8 +56,8 @@ var kick = module.exports = (function() {
 
                 var lightLength = lights.length;
                 
-                for(var i = 0; i < lightLength -1; i++) {
-                    emitters.lights[i].sendCode(codes[lights[i]].off, function(error, stdout) {  
+                for(var i = 1; i < lightLength -1; i++) {
+                    emitters[lights[i]].sendCode(codes[lights[i]].off, function(error, stdout) {  
                         if(!error) 
                         console.log(stdout); 
                     })
