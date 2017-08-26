@@ -28,7 +28,7 @@ var kick = module.exports = (function() {
         });        
     };
 
-    var turnAllLightOff = function() {
+    var turnAllLightOff = function(lights) {
             var codes = settings.rfCodes
         return new Promise(function(resolve, reject) {
             rfEmitter = rpi433.emitter({
@@ -36,34 +36,24 @@ var kick = module.exports = (function() {
                 pulseLength: 178            //Send the code with a 178 pulse length
             });
 
-            
-    
-            rfEmitter.sendCode(codes['one'].off, function(error, stdout) {  
-                if(!error) 
-                console.log(stdout); 
+            var emitter =  {
 
-            }).then(function(){
-                RfEmitter = rpi433.emitter({
-                    pin: 0,                     
-                    pulseLength: 178            
-                });
-                rfEmitter.sendCode(codes['three'].off, function(error, stdout) {  
+            }
+            var lightLength = lights.length;
+            console.log('lights length ' + lightLength)
+
+            for(var x = 1; x < lightLength; x++) {
+                console.log(x)
+                emitter[lights[x]] = rpi433.emitter({ pin: 0, pulseLength: 178 });
+            }
+            
+            for(var i = 0; x < lightLength -1; i++) {
+                rfEmitter.sendCode(codes[lights[x]].off, function(error, stdout) {  
                     if(!error) 
                     console.log(stdout); 
-
-                }).then(function() {
-                    RFEmitter = rpi433.emitter({
-                        pin: 0,                     
-                        pulseLength: 178            
-                    });
-                    rfEmitter.sendCode(codes['five'].off, function(error, stdout) {  
-                        if(!error) 
-                        console.log(stdout); 
-                        resolve('should have turned on all three')
-                    })
                 })
-            })
-            .catch(reject)
+            }
+    
         })
     }
     var turnLightOff = function(socket) {
