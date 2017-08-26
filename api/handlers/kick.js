@@ -73,7 +73,7 @@ var kick = module.exports = (function() {
                     console.log(lights[i])
                     params = {
                         emit: emitters[lights[i]],
-                        light: i,
+                        light: lights[i],
                     }
                     console.log('emit params')
                     emitOff(params)
