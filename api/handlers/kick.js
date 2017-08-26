@@ -44,7 +44,6 @@ var kick = module.exports = (function() {
             console.log(emitter)
             resolve(emitter)
         })
-        .catch(reject)
     }
 
     var turnAllLightsOff = function(lights) {
