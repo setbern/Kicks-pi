@@ -46,21 +46,36 @@ var kick = module.exports = (function() {
         })
     }
 
+    var emitOff = function(params) {
+        var codes = settings.rfCodes
+        console.log(params)
+        return new Promise(function(resolve, reject) {
+            params.emit.sendCode(codes[params.light].off, function(error, stdout) {  
+                if(!error) 
+                console.log(stdout); 
+                resolve('on')
+            })
+        })
+    }
     var turnAllLightsOff = function(lights) {
             var codes = settings.rfCodes
         return new Promise(function(resolve, reject) {
             console.log('turn off');
-            createEmitter(lights).then(function(emitters) {
+            createEmitter(lights)
+            .then(function(emitters) {
                 console.log('emit')
                 console.log(emitters)
 
                 var lightLength = lights.length;
-                
+                console.log('emit for looop');
+
                 for(var i = 1; i < lightLength -1; i++) {
-                    emitters[lights[i]].sendCode(codes[lights[i]].off, function(error, stdout) {  
-                        if(!error) 
-                        console.log(stdout); 
-                    })
+                    params = {
+                        emit: emitters[i],
+                        light: i,
+                    }
+                    console.log('emit params')
+                    emitOff(params)
                 }
             })
             .then(resolve)
