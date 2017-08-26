@@ -43,7 +43,7 @@ var kick = module.exports = (function() {
             console.log(emitter)
             resolve(emitter)
         })
-    }
+    };
 
     var emitOff = function(params) {
         var codes = settings.rfCodes
@@ -55,7 +55,7 @@ var kick = module.exports = (function() {
                 resolve('on')
             })
         })
-    }
+    };
     var turnAllLightsOff = function(lights) {
             var codes = settings.rfCodes
         return new Promise(function(resolve, reject) {
@@ -72,7 +72,7 @@ var kick = module.exports = (function() {
                     console.log('i ' +i)
                     console.log(lights[i])
                     params = {
-                        emit: emitters[lights[" " + i]],
+                        emit: emitters[lights[i]],
                         light: i,
                     }
                     console.log('emit params')
