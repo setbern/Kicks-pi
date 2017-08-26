@@ -27,6 +27,46 @@ var kick = module.exports = (function() {
             })
         });        
     };
+
+    var turnAllLightOff = function() {
+            var codes = settings.rfCodes
+        return new Promise(function(resolve, reject) {
+            rfEmitter = rpi433.emitter({
+                pin: 0,                     //Send through GPIO 0 (or Physical PIN 11)
+                pulseLength: 178            //Send the code with a 178 pulse length
+            });
+
+            var lights = lights.length;
+
+            var 
+            rfEmitter.sendCode(codes['one'].off, function(error, stdout) {  
+                if(!error) 
+                console.log(stdout); 
+
+            }).then(function(){
+                RfEmitter = rpi433.emitter({
+                    pin: 0,                     
+                    pulseLength: 178            
+                });
+                rfEmitter.sendCode(codes['three'].off, function(error, stdout) {  
+                    if(!error) 
+                    console.log(stdout); 
+
+                }).then(function() {
+                    RFEmitter = rpi433.emitter({
+                        pin: 0,                     
+                        pulseLength: 178            
+                    });
+                    rfEmitter.sendCode(codes['five'].off, function(error, stdout) {  
+                        if(!error) 
+                        console.log(stdout); 
+                        resolve('should have turned on all three')
+                    })
+                })
+            })
+            .catch(reject)
+        })
+    }
     var turnLightOff = function(socket) {
         console.log('turnLightOff');
         var codes = settings.rfCodes
@@ -46,7 +86,7 @@ var kick = module.exports = (function() {
         });        
     };
 
-    var turnMultiLightsOn = function() {
+    var turnMultiLightsOn = function(lights) {
         var codes = settings.rfCodes
         return new Promise(function(resolve, reject) {
             rfEmitter = rpi433.emitter({
@@ -54,6 +94,9 @@ var kick = module.exports = (function() {
                 pulseLength: 178            //Send the code with a 178 pulse length
             });
 
+            var lights = lights.length;
+
+            var 
             rfEmitter.sendCode(codes['one'].on, function(error, stdout) {  
                 if(!error) 
                 console.log(stdout); 
@@ -85,7 +128,8 @@ var kick = module.exports = (function() {
     return {
         turnLightOn: turnLightOn,
         turnLightOff: turnLightOff,
-        turnMultiLightsOn: turnMultiLightsOn
+        turnMultiLightsOn: turnMultiLightsOn,
+        turnAllLightOff: turnAllLightOff
     };
 })();
-kick.turnMultiLightsOn()
+kick.turnMultiLightsOn(['one', 'three', 'five']);

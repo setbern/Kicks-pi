@@ -44,7 +44,7 @@ var io = require('socket.io')(server);
 
 
 io.on('connection', function(socket) {
-    
+
     console.log('brack bracka');
     socket.on('on', function(data, from) {
         console.log('socket on')
@@ -56,6 +56,11 @@ io.on('connection', function(socket) {
         console.log('socket off')
         console.log(data)
         kick.turnLightOff(data)
+    })
+
+    socket.on('disconnect', () => {
+        console.log('Socket disconnected: ' + _id)
+        kick.turnAllLightOff()
     })
 });
 
