@@ -94,7 +94,7 @@ var kick = module.exports = (function() {
                 pulseLength: 178            //Send the code with a 178 pulse length
             });
 
-            var lights = lights.length;
+           
 
              
             rfEmitter.sendCode(codes['one'].on, function(error, stdout) {  
