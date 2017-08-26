@@ -68,16 +68,28 @@ var kick = module.exports = (function() {
                 var lightLength = lights.length;
                 console.log('emit for looop');
 
+                
+
+                var callEmitters = [
+
+                ]
                 for(var i = 0; i < lightLength ; i++) {
                     console.log('i ' +i)
                     console.log(lights[i])
+
                     params = {
                         emit: emitters[lights[i]],
                         light: lights[i],
                     }
-                    console.log('emit params')
-                    emitOff(params)
+                    
+                    callEmitters.push(emitOff(params));
                 }
+
+                Promise.all(callEmitters)
+                .then(function() {
+                    resolve('lit')
+                })
+
             })
             .then(resolve)
             .catch(reject)
