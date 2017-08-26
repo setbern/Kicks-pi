@@ -50,8 +50,7 @@ var kick = module.exports = (function() {
             var codes = settings.rfCodes
         return new Promise(function(resolve, reject) {
             console.log('turn off');
-            createEmitter(lights)
-            .then(function(emitters) {
+            createEmitter(lights).then(function(emitters) {
                 console.log('emit')
                 console.log(emitters)
 
