@@ -132,4 +132,4 @@ var kick = module.exports = (function() {
         turnAllLightOff: turnAllLightOff
     };
 })();
-kick.turnMultiLightsOn(['one', 'three', 'five']);
+//kick.turnMultiLightsOn(['one', 'three', 'five']);
