@@ -38,7 +38,7 @@ var kick = module.exports = (function() {
 
             var lights = lights.length;
 
-            var 
+    
             rfEmitter.sendCode(codes['one'].off, function(error, stdout) {  
                 if(!error) 
                 console.log(stdout); 
@@ -96,7 +96,7 @@ var kick = module.exports = (function() {
 
             var lights = lights.length;
 
-            var 
+             
             rfEmitter.sendCode(codes['one'].on, function(error, stdout) {  
                 if(!error) 
                 console.log(stdout); 
