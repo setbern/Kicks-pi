@@ -46,7 +46,7 @@ var kick = module.exports = (function() {
         })
     }
 
-    var turnAllLightOff = function(lights) {
+    var turnAllLightsOff = function(lights) {
             var codes = settings.rfCodes
         return new Promise(function(resolve, reject) {
             console.log('turn off');
