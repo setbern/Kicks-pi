@@ -60,8 +60,8 @@ io.on('connection', function(socket) {
 
     socket.on('disconnect', () => {
         console.log('Socket disconnected: ')
-        //kick.turnAllLightsOff(['one', 'three', 'five']);
-        kick.turnAllLightsOff(['one']);
+        kick.turnAllLightsOff(['one', 'three', 'five']);
+        //kick.turnAllLightsOff(['one']);
 
     })
 });
