@@ -28,31 +28,43 @@ var kick = module.exports = (function() {
         });        
     };
 
-    var turnAllLightOff = function(lights) {
-            var codes = settings.rfCodes
+    var createEmitter = function(lights) {
         return new Promise(function(resolve, reject) {
-            rfEmitter = rpi433.emitter({
-                pin: 0,                     //Send through GPIO 0 (or Physical PIN 11)
-                pulseLength: 178            //Send the code with a 178 pulse length
-            });
+            var lightLength = lights.length;
+            console.log('lights length ' + lightLength)
 
             var emitter =  {
 
             }
-            var lightLength = lights.length;
-            console.log('lights length ' + lightLength)
 
-            for(var x = 1; x < lightLength; x++) {
+            for(var x = 0; x < lightLength; x++) {
                 console.log(x)
                 emitter[lights[x]] = rpi433.emitter({ pin: 0, pulseLength: 178 });
             }
+
+            return emitter
+        })
+    }
+
+    var turnAllLightOff = function(lights) {
+            var codes = settings.rfCodes
+        return new Promise(function(resolve, reject) {
             
-            for(var i = 0; x < lightLength -1; i++) {
-                rfEmitter.sendCode(codes[lights[x]].off, function(error, stdout) {  
-                    if(!error) 
-                    console.log(stdout); 
-                })
-            }
+            createEmitter(lights)
+            .then(function(emitters) {
+                console.log(emitters)
+
+                var lightLength = lights.length;
+                
+                for(var i = 0; i < lightLength -1; i++) {
+                    emitters.lights[i].sendCode(codes[lights[i]].off, function(error, stdout) {  
+                        if(!error) 
+                        console.log(stdout); 
+                    })
+                }
+            })
+            
+            
     
         })
     }
