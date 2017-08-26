@@ -33,9 +33,9 @@ var kick = module.exports = (function() {
             var lightLength = lights.length;
             console.log('lights length ' + lightLength)
 
-            var emitter =  [
+            var emitter =  {}
 
-            ]
+            
 
             for(var x = 0; x < lightLength; x++) {
                 console.log(x)
