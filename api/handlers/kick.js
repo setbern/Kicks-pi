@@ -49,9 +49,10 @@ var kick = module.exports = (function() {
     var turnAllLightOff = function(lights) {
             var codes = settings.rfCodes
         return new Promise(function(resolve, reject) {
-            
+            console.log('turn off');
             createEmitter(lights)
             .then(function(emitters) {
+                console.log('emit')
                 console.log(emitters)
 
                 var lightLength = lights.length;
@@ -127,10 +128,11 @@ var kick = module.exports = (function() {
         })
     }
     return {
+        createEmitter: createEmitter,
         turnLightOn: turnLightOn,
         turnLightOff: turnLightOff,
         turnMultiLightsOn: turnMultiLightsOn,
-        turnAllLightOff: turnAllLightOff
+        turnAllLightsOff: turnAllLightsOff
     };
 })();
 //kick.turnMultiLightsOn(['one', 'three', 'five']);
