@@ -72,7 +72,7 @@ var kick = module.exports = (function() {
                     console.log('i ' +i)
                     console.log(lights[i])
                     params = {
-                        emit: emitter[lights[i]],
+                        emit: emitter[lights[" " + i]],
                         light: i,
                     }
                     console.log('emit params')
