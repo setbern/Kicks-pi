@@ -44,6 +44,7 @@ var io = require('socket.io')(server);
 
 
 io.on('connection', function(socket) {
+    
     console.log('brack bracka');
     socket.on('on', function(data, from) {
         console.log('socket on')
