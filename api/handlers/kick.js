@@ -41,7 +41,7 @@ var kick = module.exports = (function() {
                 console.log(x)
                 emitter[lights[x]] = rpi433.emitter({ pin: 0, pulseLength: 178 });
             }
-
+            console.log(emitter)
             return emitter
         })
     }
@@ -64,9 +64,9 @@ var kick = module.exports = (function() {
                     })
                 }
             })
+            .then(resolve)
+            .catch(reject)
             
-            
-    
         })
     }
     var turnLightOff = function(socket) {
