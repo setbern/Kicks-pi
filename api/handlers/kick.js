@@ -49,6 +49,7 @@ var kick = module.exports = (function() {
         var codes = settings.rfCodes
         console.log(params)
         return new Promise(function(resolve, reject) {
+            console.log('emitOff');
             params.emit.sendCode(codes[params.light].off, function(error, stdout) {  
                 if(!error) 
                 console.log(stdout); 
