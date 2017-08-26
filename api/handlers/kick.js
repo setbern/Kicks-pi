@@ -85,7 +85,8 @@ var kick = module.exports = (function() {
                     
                     callEmitters.push(emitOff(params));
                 }
-
+                console.log('callEmitters')
+                console.log(callEmitters)
                 Promise.all(callEmitters)
                 .then(function() {
                     resolve('lit')
