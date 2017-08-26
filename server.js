@@ -59,7 +59,7 @@ io.on('connection', function(socket) {
     })
 
     socket.on('disconnect', () => {
-        console.log('Socket disconnected: ' + _id)
+        console.log('Socket disconnected: ')
         kick.turnAllLightOff()
     })
 });
