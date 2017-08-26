@@ -70,9 +70,9 @@ var kick = module.exports = (function() {
 
                 for(var i = 0; i < lightLength ; i++) {
                     console.log('i ' +i)
-                    console.log(lights[x])
+                    console.log(lights[i])
                     params = {
-                        emit: emitter[lights[x]],
+                        emit: emitter[lights[i]],
                         light: i,
                     }
                     console.log('emit params')
