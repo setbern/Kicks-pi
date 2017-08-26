@@ -39,6 +39,7 @@ var kick = module.exports = (function() {
 
             for(var x = 0; x < lightLength; x++) {
                 console.log(x)
+                console.log(lights[x])
                 emitter[lights[x]] = rpi433.emitter({ pin: 0, pulseLength: 178 });
             }
             console.log(emitter)
@@ -69,7 +70,8 @@ var kick = module.exports = (function() {
                 var lightLength = lights.length;
                 console.log('emit for looop');
 
-                for(var i = 1; i < lightLength -1; i++) {
+                for(var i = 0; i < lightLength ; i++) {
+                    console.log('i ' +i)
                     params = {
                         emit: emitter[lights[x]],
                         light: i,
