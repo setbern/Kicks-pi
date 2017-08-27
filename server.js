@@ -46,6 +46,9 @@ var io = require('socket.io')(server);
 io.on('connection', function(socket) {
 
     console.log('brack bracka');
+    let now = moment.utc().hours;
+    console.log(now)
+    
     kick.turnAllLightsOff(
         [
             {
