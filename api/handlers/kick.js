@@ -72,7 +72,7 @@ var kick = module.exports = (function() {
                 pin: 0,                     
                 pulseLength: 178            
             });
-            
+
             var status = params.status ? 'on' : 'off';
             rfEmitter.sendCode(codes[params.light][status], function(error, stdout) {  
                 if(!error) 
@@ -82,20 +82,27 @@ var kick = module.exports = (function() {
         })
     }
     var turnAllLightsOff = function(params) {
+        console.log('turnAllLightsOff')
             var codes = settings.rfCodes
             var self = this;
         return new Promise(function(resolve, reject) {
             var deliver = []
+
             for (var i = 0; i > params.length; i++) {
-                deliver.push(self.toggleLight());
+                deliver.push(self.toggleLight(params[i]));
             }
+            console.log(deliver)
             Promise.all(
                 deliver
-            )
-
+            ).then(function(results){
+                console.log('results')
+                console.log(results)
+                resolve('yay');
+            })
+            .catch(reject)
             
         })
-    }
+    };
     var turnLightOff = function(socket) {
         console.log('turnLightOff');
         var codes = settings.rfCodes
