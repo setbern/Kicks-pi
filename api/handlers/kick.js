@@ -89,12 +89,11 @@ var kick = module.exports = (function() {
             var deliver = []
 
             for (var i = 0; i > params.length; i++) {
-                deliver.push(self.toggleLight(params[i]));
+                deliver.push(toggleLight(params[i]));
             }
             console.log(deliver)
-            Promise.all(
-                deliver
-            ).then(function(results){
+            Promise.all(deliver)
+            .then(function(results){
                 console.log('results')
                 console.log(results)
                 resolve('yay');
