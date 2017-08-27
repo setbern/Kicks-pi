@@ -47,7 +47,7 @@ var moment = require('moment');
 io.on('connection', function(socket) {
 
     console.log('brack bracka');
-    let now = moment.format('H');
+    let now = moment().format('H');
     console.log(now)
     
     kick.turnAllLightsOff(
