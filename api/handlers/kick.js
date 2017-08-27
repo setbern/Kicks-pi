@@ -57,44 +57,42 @@ var kick = module.exports = (function() {
             })
         })
     };
-    var turnAllLightsOff = function(lights) {
-            var codes = settings.rfCodes
-        return new Promise(function(resolve, reject) {
-            console.log('turn off');
-            createEmitter(lights)
-            .then(function(emitters) {
-                console.log('emit')
-                console.log(emitters)
 
-                var lightLength = lights.length;
-                console.log('emit for looop');
-
-                
-
-                var callEmitters = [
-
-                ]
-                for(var i = 0; i < lightLength ; i++) {
-                    console.log('i ' +i)
-                    console.log(lights[i])
-
-                    params = {
-                        emit: emitters[lights[i]],
-                        light: lights[i],
-                    }
-                    
-                    callEmitters.push(emitOff(params));
-                }
-                console.log('callEmitters')
-                console.log(callEmitters)
-                Promise.all(callEmitters)
-                .then(function() {
-                    resolve('lit')
-                })
-
+    var toggleLight = function(params) {
+        /** 
+            PARAMS = {
+                STATUS: BOOL,
+                LIGHT: STRING
+            }
+        **/
+        var codes = settings.rfCodes
+        return new Promise(function(res,rej){
+            console.log('toggleLight')
+            var emit = rpi433.emitter({
+                pin: 0,                     
+                pulseLength: 178            
+            });
+            
+            var status = params.status ? 'on' : 'off';
+            rfEmitter.sendCode(codes[params.light][status], function(error, stdout) {  
+                if(!error) 
+                console.log(stdout); 
+                resolve(stdout)
             })
-            .then(resolve)
-            .catch(reject)
+        })
+    }
+    var turnAllLightsOff = function(params) {
+            var codes = settings.rfCodes
+            var self = this;
+        return new Promise(function(resolve, reject) {
+            var deliver = []
+            for (var i = 0; i > params.length; i++) {
+                deliver.push(self.toggleLight());
+            }
+            Promise.all(
+                deliver
+            )
+
             
         })
     }
