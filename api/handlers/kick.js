@@ -77,9 +77,10 @@ var kick = module.exports = (function() {
             emit.sendCode(codes[params.light][status], function(error, stdout) {  
                 if(!error) 
                 console.log(stdout); 
-                resolve(stdout)
+                res(stdout)
             })
-        })
+
+        }).catch(rej)
     }
     var turnAllLightsOff = function(params) {
         console.log('turnAllLightsOff')
