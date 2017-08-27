@@ -74,7 +74,7 @@ var kick = module.exports = (function() {
             });
 
             var status = params.status ? 'on' : 'off';
-            rfEmitter.sendCode(codes[params.light][status], function(error, stdout) {  
+            emit.sendCode(codes[params.light][status], function(error, stdout) {  
                 if(!error) 
                 console.log(stdout); 
                 resolve(stdout)
