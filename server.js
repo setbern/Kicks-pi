@@ -48,6 +48,9 @@ io.on('connection', function(socket) {
 
     console.log('brack bracka');
     let now = moment().format('H');
+    if (now >= 20) {
+
+    }
     console.log(now)
     
     kick.turnAllLightsOff(
@@ -59,6 +62,11 @@ io.on('connection', function(socket) {
             },
             {
                 light: 'three',
+                status: true
+                
+            },
+            {
+                light: 'four',
                 status: true
                 
             },
@@ -91,6 +99,11 @@ io.on('connection', function(socket) {
                 },
                 {
                     light: 'three',
+                    status: false
+                    
+                },
+                {
+                    light: 'four',
                     status: false
                     
                 },

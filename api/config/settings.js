@@ -37,24 +37,28 @@ module.exports = {
         one:{
             on: 21811,
             off: 21820,
+            label: 'cano',
             
         },
         two:{
             on: 21955,
             off: 21964,
-            
+            label: 'blue-living',
         },
         three:{
             on: 22275,
             off: 22284,
+            label: 'white-living',
         },
         four:{
             on: 23811,
             off: 23820,
+            label: 'white-kitchen',
         },
         five:{
             on: 29955,
             off: 29964,
+            label: 'blue-bed'
         }
     },
 
