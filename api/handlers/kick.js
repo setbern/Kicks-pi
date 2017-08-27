@@ -79,8 +79,7 @@ var kick = module.exports = (function() {
                 console.log(stdout); 
                 res(stdout)
             })
-
-        }).catch(rej)
+        })
     }
     var turnAllLightsOff = function(params) {
         console.log('turnAllLightsOff')
