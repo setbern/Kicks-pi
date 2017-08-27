@@ -89,6 +89,7 @@ var kick = module.exports = (function() {
             var deliver = []
 
             for (var i = 0; i > params.length; i++) {
+                console.log(params[i])
                 deliver.push(toggleLight(params[i]));
             }
             console.log(deliver)
