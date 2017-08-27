@@ -46,6 +46,24 @@ var io = require('socket.io')(server);
 io.on('connection', function(socket) {
 
     console.log('brack bracka');
+    kick.turnAllLightsOff(
+        [
+            {
+                light: 'one',
+                status: true
+
+            },
+            {
+                light: 'three',
+                status: true
+                
+            },
+            {
+                light: 'five',
+                status: true
+                
+            } 
+        ]);
     socket.on('on', function(data, from) {
         console.log('socket on')
         console.log(data)

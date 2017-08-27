@@ -86,26 +86,43 @@ var kick = module.exports = (function() {
             var codes = settings.rfCodes
             var self = this;
         return new Promise(function(resolve, reject) {
-            var deliver = []
-
-            for (var i = 0; i > params.length; i++) {
-                console.log(params[i])
-                deliver.push(toggleLight(params[i]));
-            }
             toggleLight(params[0])
             .then(function(results){
                 console.log('results')
                 console.log(results)
-                return toggleLight(params[1])
+                if(params[1]) {
+                    return toggleLight(params[1])
+                } else{
+                    resolve('done');
+                }
+                
             })
             .then(function(results){
                 console.log('results')
                 console.log(results)
-                return toggleLight(params[2])
+                if(params[2]) {
+                    return toggleLight(params[2])
+                } else{
+                    resolve('done');
+                }
             })
             .then(function(result){
                 console.log(result)
                 resolve('yes')
+                if(params[3]) {
+                    return toggleLight(params[3])
+                } else{
+                    resolve('done');
+                }
+            })
+            .then(function(result){
+                console.log(result)
+                resolve('yes')
+                if(params[4]) {
+                    return toggleLight(params[4])
+                } else{
+                    resolve('done');
+                }
             })
             .catch(reject)
             
