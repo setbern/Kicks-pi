@@ -108,7 +108,6 @@ var kick = module.exports = (function() {
             })
             .then(function(result){
                 console.log(result)
-                resolve('yes')
                 if(params[3]) {
                     return toggleLight(params[3])
                 } else{
@@ -117,7 +116,7 @@ var kick = module.exports = (function() {
             })
             .then(function(result){
                 console.log(result)
-                resolve('yes')
+               
                 if(params[4]) {
                     return toggleLight(params[4])
                 } else{
