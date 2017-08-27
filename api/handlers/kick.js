@@ -94,9 +94,7 @@ var kick = module.exports = (function() {
             }
             console.log(deliver)
             Promise.all([
-                toggleLight(params[0]),
-                toggleLight(params[1]),
-                toggleLight(params[2])
+                toggleLight(params[0])
             ])
             .then(function(results){
                 console.log('results')
