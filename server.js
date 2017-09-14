@@ -53,29 +53,29 @@ io.on('connection', function(socket) {
     }
     console.log(now)
     
-    kick.turnAllLightsOff(
-        [
-            {
-                light: 'one',
-                status: true
+    // kick.toggleLights(
+    //     [
+    //         {
+    //             light: 'one',
+    //             status: true
 
-            },
-            {
-                light: 'three',
-                status: true
+    //         },
+    //         {
+    //             light: 'three',
+    //             status: true
                 
-            },
-            {
-                light: 'four',
-                status: true
+    //         },
+    //         {
+    //             light: 'four',
+    //             status: true
                 
-            },
-            {
-                light: 'five',
-                status: true
+    //         },
+    //         {
+    //             light: 'five',
+    //             status: true
                 
-            } 
-        ]);
+    //         } 
+    //     ]);
     socket.on('on', function(data, from) {
         console.log('socket on')
         console.log(data)
@@ -90,30 +90,29 @@ io.on('connection', function(socket) {
 
     socket.on('disconnect', () => {
         console.log('Socket disconnected: ')
-        kick.turnAllLightsOff(
-            [
-                {
-                    light: 'one',
-                    status: false
+        // kick.toggleLights(
+        //     [
+        //         {
+        //             light: 'one',
+        //             status: false
 
-                },
-                {
-                    light: 'three',
-                    status: false
+        //         },
+        //         {
+        //             light: 'three',
+        //             status: false
                     
-                },
-                {
-                    light: 'four',
-                    status: false
+        //         },
+        //         {
+        //             light: 'four',
+        //             status: false
                     
-                },
-                {
-                    light: 'five',
-                    status: false
+        //         },
+        //         {
+        //             light: 'five',
+        //             status: false
                     
-                } 
-            ]);
-        //kick.turnAllLightsOff(['one']);
+        //         } 
+        //     ]);
 
     })
 });
