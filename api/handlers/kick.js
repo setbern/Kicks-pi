@@ -42,6 +42,8 @@ var kick = module.exports = (function() {
             var codes = settings.rfCodes
             var self = this;
         return new Promise(function(resolve, reject) {
+            console.log('toggleLights')
+            console.log(params)
             toggleEmitter(params[0])
             .then(function(results){
                 console.log('results')
