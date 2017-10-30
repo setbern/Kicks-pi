@@ -1,7 +1,7 @@
 var apiModules = require('./modules');
 var models = require('./models');
 var types = require('./types');
-var kick = require('./api/handlers/kick');
+var kick = require('./handlers/kick');
 
 var g = types.graphql;
 
