@@ -41,6 +41,19 @@ var apiSchema = new g.GraphQLSchema(
             description: 'Endpoints with GET functionality go here',
 
             fields: {
+                toggleLights:  {
+                    type: g.GraphQLString,
+                    description: 'Toggle the state of any of the lights',
+                    args: {
+                        socket: {
+                            description: 'Array of Socket types to toggle lights with',
+                            type: new g.GraphQLNonNull(types.SocketType),
+                        }
+                    },
+                    resolve: function(root, args) {
+                        return apiModules.kick.toggleLights(args);
+                    }
+                }
                 sampleModel: {
                     type: types.SampleModelType,
                     description: 'Fetches a data model object by specified properties',

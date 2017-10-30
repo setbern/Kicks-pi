@@ -42,85 +42,29 @@ var io = require('socket.io')(server);
 
 
 
-var moment = require('moment');
 
-io.on('connection', function(socket) {
+// io.on('connection', function(socket) {
+//     console.log('brack bracka');
+//     let now = moment().format('H');
+//     if (now >= 20) {
 
-    console.log('brack bracka');
-    let now = moment().format('H');
-    if (now >= 20) {
-
-    }
-    console.log(now)
-    
-    // kick.toggleLights(
-    //     [
-    //         {
-    //             light: 'one',
-    //             status: true
-
-    //         },
-    //         {
-    //             light: 'three',
-    //             status: true
-                
-    //         },
-    //         {
-    //             light: 'four',
-    //             status: true
-                
-    //         },
-    //         {
-    //             light: 'five',
-    //             status: true
-                
-    //         } 
-    //     ]);
-    socket.on('on', function(data, from) {
-        console.log('socket on')
-        console.log(data)
-        //kick.turnLightOn(data)
-        
-    })
-    socket.on('toggle', function(data, from) {
-        console.log('toggle')
-        console.log(data)
-        kick.toggleLights(data)
-    })
-    socket.on('off', function(data, from) {
-        console.log('socket off')
-        console.log(data)
-        //kick.turnLightOff(data)
-    })
-
-    socket.on('disconnect', () => {
-        console.log('Socket disconnected: ')
-        // kick.toggleLights(
-        //     [
-        //         {
-        //             light: 'one',
-        //             status: false
-
-        //         },
-        //         {
-        //             light: 'three',
-        //             status: false
-                    
-        //         },
-        //         {
-        //             light: 'four',
-        //             status: false
-                    
-        //         },
-        //         {
-        //             light: 'five',
-        //             status: false
-                    
-        //         } 
-        //     ]);
-
-    })
-});
+//     }
+//     socket.on('on', function(data, from) {
+//         console.log('socket on')
+//         console.log(data)
+//     })
+//     socket.on('toggle', function(data, from) {
+//         console.log('toggle')
+//         console.log(data)
+//     })
+//     socket.on('off', function(data, from) {
+//         console.log('socket off')
+//         console.log(data)
+//     })
+//     socket.on('disconnect', () => {
+//         console.log('Socket disconnected: ')
+//     })
+// });
 
 
 //GraphiQL  setup
