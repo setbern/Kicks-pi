@@ -6,7 +6,7 @@ var SocketType = module.exports = new g.GraphQLInputObjectType({
     fields: function(model) {
         return {
             light:{
-                type: new g.GraphQLNonNull(g.GraphQString)
+                type: new g.GraphQLNonNull(g.GraphQLString)
             },
             status:{
                 type: new g.GraphQLNonNull(g.GraphQLBoolean)
