@@ -6,11 +6,6 @@ var moment = require('moment');
 var kick = module.exports = (function() {
 
     var settings = require('../config/settings');
-
-    var json = request.defaults({
-        json: true,
-        
-    });
    
 
     var toggleEmitter = function(params) {
@@ -88,4 +83,3 @@ var kick = module.exports = (function() {
         toggleLights: toggleLights
     };
 })();
-//kick.turnMultiLightsOn(['one', 'three', 'five']);
