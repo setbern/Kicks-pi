@@ -53,7 +53,7 @@ var apiSchema = new g.GraphQLSchema(
                     resolve: function(root, args) {
                         return apiModules.kick.toggleLights(args);
                     }
-                }
+                },
                 sampleModel: {
                     type: types.SampleModelType,
                     description: 'Fetches a data model object by specified properties',
