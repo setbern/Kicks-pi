@@ -6,10 +6,10 @@ var SocketType = module.exports = new g.GraphQLInputObjectType({
     fields: function(model) {
         return {
             light:{
-                type: new GraphQLNonNull(g.GraphQLLong)
+                type: new g.GraphQLNonNull(g.GraphQLLong)
             },
             status:{
-                type: new GraphQLNonNull(g.GraphQLBoolean)
+                type: new g.GraphQLNonNull(g.GraphQLBoolean)
             }
         };
     }
