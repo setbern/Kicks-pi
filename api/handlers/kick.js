@@ -41,12 +41,12 @@ var kick = module.exports = (function() {
             console.log('toggleLights')
             console.log(params)
             var sockets = params.socket
-            toggleEmitter(socket[0])
+            toggleEmitter(sockets[0])
             .then(function(results){
                 console.log('results')
                 console.log(results)
-                if(socket[1]) {
-                    return toggleEmitter(socket[1])
+                if(sockets[1]) {
+                    return toggleEmitter(sockets[1])
                 } else{
                     resolve('done');
                 }
@@ -54,16 +54,16 @@ var kick = module.exports = (function() {
             .then(function(results){
                 console.log('results')
                 console.log(results)
-                if(socket[2]) {
-                    return toggleEmitter(socket[2])
+                if(sockets[2]) {
+                    return toggleEmitter(sockets[2])
                 } else{
                     resolve('done');
                 }
             })
             .then(function(result){
                 console.log(result)
-                if(socket[3]) {
-                    return toggleEmitter(socket[3])
+                if(sockets[3]) {
+                    return toggleEmitter(sockets[3])
                 } else{
                     resolve('done');
                 }
@@ -71,8 +71,8 @@ var kick = module.exports = (function() {
             .then(function(result){
                 console.log(result)
                
-                if(socket[4]) {
-                    return toggleEmitter(socket[4])
+                if(sockets[4]) {
+                    return toggleEmitter(sockets[4])
                 } else{
                     resolve('done');
                 }
