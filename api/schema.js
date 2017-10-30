@@ -47,32 +47,14 @@ var apiSchema = new g.GraphQLSchema(
                     args: {
                         socket: {
                             description: 'Array of Socket types to toggle lights with',
-                            type:   new g.GraphQLList(types.SocketType) 
+                            type:  new GraphQLNonNull(g.GraphQLList(types.SocketType)),
                         }
                     },
                     resolve: function(root, args) {
                         return apiModules.kick.toggleLights(args);
                     }
                 },
-                sampleModel: {
-                    type: types.SampleModelType,
-                    description: 'Fetches a data model object by specified properties',
-                    args: {
-                        id: {
-                            description: 'Specify the data model\'s unique ID',
-                            type: g.GraphQLLong
-                        },
-                        property: {
-                            description: 'Or allow the client to specify any other properties as needed',
-                            type: g.GraphQLString
-                        }
-                    },
-
-                    resolve: function(root, args) {
-                        return apiModules.sampleModule.publicFunction2(args);
-                    }
-                },
-
+                
                 sampleModels: {
                     type: new g.GraphQLList(types.SampleModelType),
                     description: 'Same as the above query, but returns an array of objects',
