@@ -5,13 +5,12 @@ var SocketType = module.exports = new g.GraphQLInputObjectType({
     description: 'Type for socket status',
     fields: function(model) {
         return {
-            light: model.attr({
-
+            light:{
                 type: new GraphQLNonNull(g.GraphQLLong)
-            }),
-            status: model.attr({
+            },
+            status:{
                 type: new GraphQLNonNull(g.GraphQLBoolean)
-            })
+            }
         };
     }
 });
