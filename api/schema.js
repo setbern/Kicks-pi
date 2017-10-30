@@ -47,7 +47,7 @@ var apiSchema = new g.GraphQLSchema(
                     args: {
                         socket: {
                             description: 'Array of Socket types to toggle lights with',
-                            type: new g.GraphQLNonNull(types.SocketType),
+                            type:   new g.GraphQLList(types.SocketType) 
                         }
                     },
                     resolve: function(root, args) {
