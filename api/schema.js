@@ -1,6 +1,7 @@
 var apiModules = require('./modules');
 var models = require('./models');
 var types = require('./types');
+var kick = require('./api/handlers/kick');
 
 var g = types.graphql;
 
@@ -51,7 +52,7 @@ var apiSchema = new g.GraphQLSchema(
                         }
                     },
                     resolve: function(root, args) {
-                        return apiModules.kick.toggleLights(args);
+                        return kick.toggleLights(args);
                     }
                 },
                 
