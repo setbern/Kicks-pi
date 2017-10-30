@@ -18,6 +18,7 @@ var kick = module.exports = (function() {
         var codes = settings.rfCodes
         return new Promise(function(res,rej){
             console.log('toggleLight')
+            console.log(params)
             var emit = rpi433.emitter({
                 pin: 0,                     
                 pulseLength: 178            
