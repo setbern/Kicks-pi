@@ -66,6 +66,10 @@ var io = require('socket.io')(server);
 //     })
 // });
 
+// Apple webhook
+var apple = require('./api/handlers/apple');
+app.post('/', apple.handleWebHook);
+
 
 //GraphiQL  setup
 var graphqlHTTP = require('express-graphql');
